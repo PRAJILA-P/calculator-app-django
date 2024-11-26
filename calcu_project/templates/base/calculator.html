@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>Django Calculator</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'styles/main.css' %}">
+  </head>
+
+  <body>
+    <section class="calculator">
+      <h1 class="calculator-title">Django Calculator App</h1>
+
+      <form action="{% url 'calculate' %}" method="POST" class="calculator-form">
+        {% csrf_token %}
+
+        <div class="input-group">
+          <label for="Number One">First Number</label>
+          <input type="number" placeholder="First Number" name="number_one" class="input-field" />
+        </div>
+
+        <div class="input-group">
+          <label for="Number Two">Second Number</label>
+          <input type="number" placeholder="Second Number" name="number_two" class="input-field" />
+        </div>
+
+        <div class="input-group">
+          <label for="Operation">Operation</label>
+          <select name="operation" class="input-field">
+            <option value="add">Add</option>
+            <option value="subtract">Subtract</option>
+            <option value="multiply">Multiply</option>
+            <option value="divide">Divide</option>
+          </select>
+        </div>
+
+        <input type="submit" value="Calculate" id="calc_btn" class="btn" />
+
+        <h3 class="result">The result is: {{ result }}</h3>
+      </form>
+    </section>
+
+    <footer class="footer">
+      © 2024 nov <a href="https://github.com/PRAJILA-P">prajila-p</a>
+    </footer>
+  </body>
+</html>
